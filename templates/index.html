@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Cupcakes{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3>Add new cupcake</h3>
+            <form id="cupcake-form">
+                <div class="form-group">
+                    <label for="flavor">Flavor</label>
+                    <input type="text" class="form-control" id="flavor" name="flavor" placeholder="Which flavor?">
+                    <label for="size" class="mt-2">Size</label>
+                    <input type="text" class="form-control" id="size" name="size" placeholder="Which size?">
+                    <label for="rating" class="mt-2">Rating</label>
+                    <input type="float" class="form-control" id="rating" name="rating" placeholder="What's the rating?">
+                    <label for="image" class="mt-2">Image</label>
+                    <input type="text" class="form-control" id="image" name="image" placeholder="image URL for cupcakes">
+                    <input type="submit" class="btn btn-success form-control mt-2" value="Add">
+                </div>
+            </form>
+        </div>
+        <div class="col">
+            <h3>Cupcake list</h3>
+            <ul id="cupcake-list"></ul>
+        </div>
+    </div>
+    
+</div>
+{% endblock %}
