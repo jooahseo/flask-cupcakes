@@ -1,7 +1,9 @@
 function generateCupcakeHTML(cupcake){
-    return `<div data-cupcake-id=${cupcake.id}>
+    return `<div>
         <li> ${cupcake.flavor} / ${cupcake.size} / ${cupcake.rating}
-            <button class="cupcake-delete btn btn-danger btn-small">X</button>
+            <button data-cupcake-id=${cupcake.id}
+            class="cupcake-delete btn btn-danger btn-sm">
+            X</button>
         </li>
         <div>
             <img class="cupcake-img" src="${cupcake.image}" 
@@ -39,11 +41,11 @@ $("#cupcake-form").on("submit", async function (evt) {
     $("#cupcake-form").trigger("reset"); 
   });
 
-$(".cupcake-delete").on('click', function(evt){
+$("#cupcake-list").on('click', ".cupcake-delete", async function(evt){
     evt.preventDefault();
-
-    console.log('hihihih')
-})
-
+    cupcakeId = $(this).data('cupcake-id')
+    await axios.delete(`/api/cupcakes/${cupcakeId}`)
+    $(this).parent().parent().remove()
+}) 
 
 $(document).ready(startCupcakePage());
